@@ -15,6 +15,8 @@ mkdir -p $POSGRESDB_BACKUP
 pg_dump ambari > /var/lib/pgsql/postgres_backup/$POSTGRES_BACKEDFILE
 gzip > /var/lib/pgsql/postgres_backup/$POSTGRES_BACKEDFILE.gz
 
+# Remove backups older than 1 days 
+find /var/lib/pgsql/postgres_backup -maxdepth 1 -type d -mtime +10 -exec rm -rf {} \;
 
 if  [  "$(grep -i 'iPostgreSQL database dump complete' /var/lib/pgsql/postgres_backup/$POSTGRES_BACKEDFILE)" ];
 then
