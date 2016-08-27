@@ -2,7 +2,7 @@
 Now=`date`
 outputdir=/home/vvelagala/scripts/mysql-hive-backup
 backupfile=mysql_hive_backup_`/bin/date +\%Y\%m\%d`.sql
-mailto=venkat.velagala@infor.com
+mailto=mailtovvrs@gmail.com
 echo "BACKUPFILE:" $backupfile
 
 echo
