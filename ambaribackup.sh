@@ -6,7 +6,7 @@ POSGRESDB_BACKUP="/var/lib/pgsql/postgres_backup/`date +%Y-%m-%d`"
 POSTGRES_BACKEDFILE=postgres_ambari_backup_`/bin/date +\%Y\%m\%d`.sql
 POSTGRES_USER="postgres"
 HOSTNAME=`hostname | awk -F. '{print $1}'`
-mailto=venkat.velagala@infor.com
+mailto=mailtovvrs@gmail.com
 
 # Create the backup directory
 mkdir -p $POSGRESDB_BACKUP
