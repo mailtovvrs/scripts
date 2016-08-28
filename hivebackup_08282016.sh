@@ -5,7 +5,7 @@ echo $MYSQLHIVEDB_BACKUP
 MYSQLHIVEDB_BACKEDFILE=mysql_hive_backup_`date +%Y-%m-%d`.sql
 echo $MYSQLHIVEDB_BACKEDFILE
 MYSQL_USER="root"
-mailto=venkat.velagala@infor.com
+mailto=mailtovvrs@gmail.com
 echo $mailto
 
 # Create the backup directory
