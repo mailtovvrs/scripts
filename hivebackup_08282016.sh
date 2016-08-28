@@ -25,13 +25,13 @@ find /opt/dataops/scripts/dbbackup1/mysql/hive -maxdepth 1 -type d -mtime +1 -ex
 
 # Checking if the backup is genuine or not
 
-
-if [  "$(grep -i 'Dump completed' /opt/dataops/scripts/$MYSQLHIVEDB_BACKEDFILE)" ];
+if [  "$(grep -i 'iDump completed' /opt/dataops/scripts/$MYSQLHIVEDB_BACKEDFILE)" ];
 then
-mailx -s "SUCCESS backup completed"  $mailto
+echo "SUCCESS backup completed" | mailx -s "MySQL Hive DB backup Succeeded" -r "DoNotReply" mailtovvrs@gmail.com
 else
- echo "Dataops Team please taken an action: Ambari Postgres backup failed due to the reason that the string PostgreSQL database completed was not found on `hostname` at `date` in $POSTGRES_BACKEDFILE"|  mailx -s "FAILURE: Ambari Postgres Backup failed on `hostname` " $mailto
+echo "FAILURE backup failed on `hostname -f`. One of the reason could be that Dump completed might not be there in $MYSQLHIVEDB_BACKEDFILE"  | mailx -s  "MySQL Hive DB Failed" -r "DoNotReply" mailtovvrs@gmail.com
 fi
+
 
 
 
