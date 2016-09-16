@@ -4,7 +4,7 @@
 POSTGRESDB_BACKUP="/opt/dataops/backups/`date +%Y-%m-%d`/ambari"
 POSTGRES_BACKEDFILE="/opt/dataops/backups/`date +%Y-%m-%d`/ambari/`hostname -f`_ambari_metadata_postgres_backup_`/bin/date +\%Y\%m\%d`.sql"
 POSTGRES_USER="postgres"
-mailto=_data_operations@infor.com@infor.com
+mailto=mailtovvrs@gmail.com
 
 # Create the backup directory
 mkdir -p $POSTGRESDB_BACKUP
@@ -24,7 +24,7 @@ echo
 echo
 echo
 else
- echo "Dataops Team please taken an action: Ambari Postgres backup failed due to the reason that the string PostgreSQL database completed was not found on `hostname` at `date` in $POSTGRES_BACKEDFILE"|  mailx -s "FAILURE: Ambari Postgres Backup failed on `hostname -f`" -r "DoNotReply" $mailto
+ echo "Team please taken an action: Ambari Postgres backup failed due to the reason that the string PostgreSQL database completed was not found on `hostname` at `date` in $POSTGRES_BACKEDFILE"|  mailx -s "FAILURE: Ambari Postgres Backup failed on `hostname -f`" -r "DoNotReply" $mailto
 
 fi
 
