@@ -30,5 +30,5 @@ fi
 
 gzip $POSTGRES_BACKEDFILE;
 
-# Remove backups older than 14 da
+# Remove backups older than 14 days
 find $POSTGRESDB_BACKUP -maxdepth 1 -type d -mtime +14 -exec rm -rf {} \;
