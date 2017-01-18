@@ -16,7 +16,7 @@ echo "put 'RamSimha', 'myrow-1', 'colfam1:q1', 'value-1'" | hbase shell > /dev/n
 echo "put 'RamSimha', 'myrow-2', 'colfam1:q2', 'value-2'" | hbase shell > /dev/null 2>&1 > /root/scripts/HBASETD
 echo "put 'RamSimha', 'myrow-3', 'colfam1:q3', 'value-3'" | hbase shell > /dev/null 2>&1 > /root/scripts/HBASETD
 
-# Insert 1K rows into the table
+# Insert 1K rows into the table - THIS IS NOT WORKING - TEST/CHECK IT OUT
 echo "for i in '0'..'9' do for j in '0'..'9' do for k in '0'..'9' do put 'RamSimha', "row-#{i}#{j}#{k}", "colfam1:#{j}#{k}", "#{j}#{k}" end end end" | hbase shell > /dev/null 2>&1 > /root/scripts/HBASETD
 
 # Get the data from the table
