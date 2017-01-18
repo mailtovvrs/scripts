@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The intention of this script is to check if there is as existing table named:TESTTABLE in the hbase shell in the 
-#non-interactive mode from CLI. If TESTTABLE is found its going to disable and drop and create a new one else will create
+# non-interactive mode from CLI. If TESTTABLE is found its going to disable and drop and create a new one else will create
 # as new table as TESTTABLE.. this script would run as user:hbase
 
 echo "list" | hbase shell > "/home/hbase/test"
