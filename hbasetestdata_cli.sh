@@ -24,3 +24,6 @@ echo "get 'RamSimha', 'myrow-1'" | hbase shell
 
 # Scannning the table
 echo "scan 'RamSimha'" | hbase shell
+
+# Count the no.of rows in a table
+echo "count 'TESTTABLE'" | hbase shell
