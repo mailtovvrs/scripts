@@ -1,0 +1,48 @@
+STEP1:
+Get the Python script ready
+
+STEP2:
+Get the alert script template ready:
+
+Example: alerts2.json
+{
+  "AlertDefinition" : {
+    "cluster_name" : "lab2",
+    "component_name" : "NAMENODE",
+    "description" : "[CUSTOM] CHECKING THE HDFS AND HBASE.",
+    "enabled" : true,
+    "help_url" : null,
+    "id" : 12,
+    "ignore_host" : false,
+    "interval" : 2,
+    "label" : " CHECKING THE HDFS AND HBASE",
+    "name" : " CHECKING THE HDFS AND HBASE",
+    "repeat_tolerance" : 1,
+    "repeat_tolerance_enabled" : false,
+    "scope" : "ANY",
+    "service_name" : "HDFS",
+    "source" : {
+      "parameters" : [
+        {
+          "name" : "connection.timeout",
+          "display_name" : "Connection Timeout",
+          "units" : "seconds",
+          "value" : 5.0,
+          "description" : "The maximum time before this alert is considered to be CRITICAL",
+          "type" : "NUMERIC",
+          "threshold" : "CRITICAL"
+        }
+      ],
+      "path" : "/var/lib/ambari-server/resources/common-services/HDFS/2.1.0.2.0/package/alerts/alert_hdfs_hbase_health_check.sh",
+      "type" : "SCRIPT"
+    }
+  }
+}
+
+STEP3:
+Use the POST to push the alert...here alerts2.json refers to template from STEP2
+curl -u admin:admin -i -H 'X-Requested-By:ambari' -X POST -d @alerts2.json  http://hostname:8080/api/v1/clusters/lab2/alert_definitions
+
+STEP4:
+For any modifications to existing alert use the PUT as below and make sure to give the alert id(76)..you can get the alertid by browsing:http://hostname:8080/api/v1/clusters/lab2/alert_definitions
+curl -u admin:admin -i -H 'X-Requested-By:ambari' -v -X PUT -d @alerts2.json http://hostname:8080/api/v1/clusters/lab2/alert_definitions/76
