@@ -26,6 +26,6 @@ Failures = json['beans'][19]['VolumeFailuresTotal']
 if Failures == 1:
  print "[WARNING]: Alert their is one disk failure but still OK since HDFS accomdates 2 disk failures"
 elif Failures == 2:
- print "[CRITICAL: Attention required that tow disk failure causes the DataNode to go down...React Immediately]"
+ print "[CRITICAL: Attention required that two disk failure causes the DataNode to go down...React Immediately]"
 else:
  print "[GOOD: No Action required]"
