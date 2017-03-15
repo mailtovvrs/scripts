@@ -1,5 +1,5 @@
 
-ER_TO_RUN="hbase"
+USER_TO_RUN="hbase"
 HBCKSTATUS="/root/scripts/HBCKSTATUS"
 mailto="xxxxx"
 
@@ -11,7 +11,7 @@ PATH="/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:
 runuser -l $USER_TO_RUN -c '/usr/bin/hbase hbck'  > /dev/null 2>&1 > /root/scripts/HBCKSTATUS
 
 
-cat HBCKSTATUS | grep -i "Status: iOK"  > /dev/null 2>&1
+cat HBCKSTATUS | grep -i "Status: OK"  > /dev/null 2>&1
 
 if [ $? -eq 0 ]
 then
@@ -25,7 +25,7 @@ fi
 
 runuser -l $USER_TO_RUN -c '/usr/bin/hbase hbck -details' > /dev/null 2>&1 >  /root/scripts/HBASEREGIONSREPORT
 
-cat HBASEREGIONSREPORT | grep -i "Status: OiK"  > /dev/null 2>&1
+cat HBASEREGIONSREPORT | grep -i "Status: OK"  > /dev/null 2>&1
 
 if [ $? -eq 0 ]
 then
