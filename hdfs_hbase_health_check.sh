@@ -11,7 +11,7 @@
 count=`egrep -c "$ABNORMAL_QUERY" $output`
 echo $count
 
-if [ $count -eq 1 ]; then
+if [ $count -eq 0 ]; then
     echo "[OK] Cluster is healthy." > $output
 else
     echo "[ABNORMAL] Cluster is abnormal!" > $output
