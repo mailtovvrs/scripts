@@ -1,5 +1,5 @@
 #/bin/bash
-# Make sure to run this script as hbase user       
+# Make sure to run this script as hbase/hdfs user       
        HADOOP_HOME=`/usr/hdp/current/hadoop-client/bin/hadoop`
        HBASE_HOME=`/usr/hdp/current/hbase-client/bin/hbase`
        ABNORMAL_QUERY="INCONSISTENT|CORRUPT|FAILED|Exception"
