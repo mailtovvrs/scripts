@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 USER_TO_RUN="hbase"
 HBCKSTATUS="/root/scripts/HBCKSTATUS"
 mailto="xxxxxx"
