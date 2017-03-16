@@ -35,7 +35,7 @@ cat HBase_ConsistencyReport | grep -i "Status: OK"  > /dev/null 2>&1
           then
           echo "HBase Cluster Consistencies Fixed - [FIXED] $(cat HBase_ConsistencyFixReport)" | mailx -s "HBASE UNHEALTHY IS FIXED - No Action Required" -r "DoNotReply" $mailto
           else
-          echo "HBase Cluster Consistencies not Fixed - [NOT FIXED] $(cat HBase_ConsistencyFixReport)" | mailx -s NOT-FIXED - Action Required" -r "DoNotReply" $mailto"
+          echo "HBase Cluster Consistencies not Fixed - [NOT FIXED] $(cat HBase_ConsistencyFixReport)" | mailx -s "HBASE UNHEALTHY IS NOT-FIXED - Action Required" -r "DoNotReply" $mailto
           fi
          }
 
