@@ -1,0 +1,129 @@
+ STEP1: GET THE PYTHON SCRIPT READY
+ 
+ *****************
+#!/usr/bin/python
+
+import urllib2
+import json
+
+def execute(a1,a2,a3):
+
+ req1 = urllib2.Request('http://pprd-hddb2-01-b.dc.gtnexus.com:16030/jmx')
+ req2 = urllib2.Request('http://pprd-hddb2-02-b.dc.gtnexus.com:16030/jmx')
+ req3 = urllib2.Request('http://pprd-hddb2-03-b.dc.gtnexus.com:16030/jmx')
+ opener = urllib2.build_opener()
+ f1 = opener.open(req1)
+ f2 = opener.open(req2)
+ f3 = opener.open(req3)
+
+ json1 = json.loads(f1.read())
+ json2 = json.loads(f2.read())
+ json3 = json.loads(f3.read())
+
+ appliedOps1 = json1['beans'][13]['sink.appliedOps']
+ appliedBatches1 = json1['beans'][13]['sink.appliedBatches']
+ ageOfLastAppliedOp1 = json1['beans'][13]['sink.ageOfLastAppliedOp']
+
+ appliedOps2 = json2['beans'][13]['sink.appliedOps']
+ appliedBatches2 = json2['beans'][13]['sink.appliedBatches']
+ ageOfLastAppliedOp2 = json2['beans'][13]['sink.ageOfLastAppliedOp']
+
+ appliedOps3 = json3['beans'][14]['sink.appliedOps']
+ appliedBatches3 = json3['beans'][14]['sink.appliedBatches']
+ ageOfLastAppliedOp3 = json3['beans'][14]['sink.ageOfLastAppliedOp']
+
+ print "RS1:appliedOps1:%s" % appliedOps1
+ print "RS1:appliedBatches1:%s" % appliedBatches1
+ print "RS1:ageOfLastAppliedOp1:%s" % ageOfLastAppliedOp1
+
+ print "\n"
+
+ print "RS2:appliedOps1:%s" % appliedOps2
+ print "RS2:appliedBatches1:%s" % appliedBatches2
+ print "RS2:ageOfLastAppliedOp1:%s" % ageOfLastAppliedOp2
+
+ print "\n"
+
+ print "RS3:appliedOps3:%s" % appliedOps3
+ print "RS3:appliedBatches3:%s" % appliedBatches3
+ print "RS3:ageOfLastAppliedOp3:%s" % ageOfLastAppliedOp3
+
+ print "\n"
+
+
+ if ageOfLastAppliedOp1 < 600:
+    result = "WARNING"
+    label = "[WARNING] Alert this is minimal latency of 0.6 seconds...Need monitoring" +str(ageOfLastAppliedOp1)
+
+ elif ageOfLastAppliedOp1 > 600:
+     result = "CRITICAL"
+     label = "[CRITICAL] **********Attention: there is a Latency of more than 0.6 seconds********" +str(ageOfLastAppliedOp1)
+ return result, [label]
+
+if __name__ == "__main__":
+ print execute(0,0,0)
+ ****************
+ 
+ 
+ STEP2: GET THE JSON TEMPLATE READY..MAKE SURE TO NOTE HERE THE component_name:HBASE_MASTER and service_name:HBASE, THESE DETAILS
+ YOU CAN GET FROM THE GENERAL TEMPLATE example:http://pprd-happ2-01-b.dc.gtnexus.com:8080/api/v1/clusters/pprddr/services/HBASE/ IF YOU 
+ ARE LOOKING FOR HBASE COMPONENT DETAILS
+
+Get the alert script type json template ready:
+
+***************************************************************************
+{
+  "AlertDefinition" : {
+    "cluster_name" : "pprddr",
+    "component_name" : "HBASE_MASTER",
+    "description" : "[CUSTOM] Monitoring the HBase Replication Metrics",
+    "enabled" : true,
+    "help_url" : null,
+    "id" : 12,
+    "ignore_host" : false,
+    "interval" : 2,
+    "label" : "Monitoring the HBase Replication",
+    "name" : "Monitoring the HBase Replication",
+    "repeat_tolerance" : 1,
+    "repeat_tolerance_enabled" : false,
+    "scope" : "ANY",
+    "service_name" : "HBASE",
+    "source" : {
+      "parameters" : [
+        {
+          "name" : "connection.timeout",
+          "display_name" : "Connection Timeout",
+          "units" : "seconds",
+          "value" : 1.0,
+          "description" : "The maximum time before this alert is considered to be CRITICAL",
+          "type" : "NUMERIC",
+          "threshold" : "CRITICAL"
+        }
+      ],
+      "path" : "/var/lib/ambari-server/resources/common-services/HDFS/2.1.0.2.0/package/alerts/ReplicationMonitoring.py",
+      "type" : "SCRIPT"
+    }
+  }
+}
+**********************************************************************************
+
+STEP3: SAVE THE PYTHON SCRIPT AND JSON TEMPLATE IN THE BELOW LOCATIONS
+
+Place the above Python script and the json template in the below location on the ambari server
+/var/lib/ambari-server/resources/common-services/HDFS/2.1.0.2.0/package/alerts
+
+
+STEP4: USE THE BELOW POST CURL TO PUSH THE TEMPLATE TO AMBARI SERVER
+Use the POST to push the json template:
+curl -u admin:sG2fH78a2UMa -i -H 'X-Requested-By:ambari' -X POST -d @ReplicationMonitoring.json  http://pprd-happ2-01-b.dc.gtnexus.com:8080/api/v1/clusters/pprddr/alert_definitions
+
+
+
+STEP5: FOR ANY UPDATES TO JSON TEMPLATE USE THE BELOW CURL TO UPDATE
+For any modifications to existing alert use the PUT as below and make sure to give the alert id(76)..you can get the alertid by browsing:http://hostname:8080/api/v1/clusters/lab2/alert_definitions
+curl -u admin:admin -i -H 'X-Requested-By:ambari' -v -X PUT -d @alerts2.json http://hostname:8080/api/v1/clusters/lab2/alert_definitions/76
+
+STEP6: USE THE BELOW CURL T DELETE THE MBARI ALERT
+
+To delete ambari alert:
+curl -u admin:sG2fH78a2UMa -i -H 'X-Requested-By:ambari' -X DELETE http://pprd-happ2-01-b.dc.gtnexus.com:8080/api/v1/clusters/pprddr/alert_definitions/151
