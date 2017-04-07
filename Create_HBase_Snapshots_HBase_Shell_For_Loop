@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DATE=`date`
+echo $DATE
+
+for sh in $(cat usertables)
+ do
+
+# Creating the HBase Snapshots
+echo "snapshot  '$sh','$sh-SS-`date +"%m-%d-%y-%H-%M"`'" | hbase shell
+echo "HERE:" $sh
+
+done
