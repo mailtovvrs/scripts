@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# cat usertables:DATAOPS_TABLE1,DATAOPS_TABLE1
+
 DATE=`date`
 echo $DATE
 
