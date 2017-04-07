@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # cat usertables:DATAOPS_TABLE1,DATAOPS_TABLE1
+# Make sure to run creating snapshots as hbase user
 
 DATE=`date`
 echo $DATE
