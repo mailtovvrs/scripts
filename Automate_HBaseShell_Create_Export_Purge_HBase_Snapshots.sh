@@ -1,12 +1,23 @@
 #!/bin/bash
 
+######################
+#cat usertables
+#DATAOPS_TABLE1 
+#DATAOPS_TABLE2
+
+
+#cat /home/base/OUTPUT1
+# snapshot  'DATAOPS_TABLE2','SS-DATAOPS_TABLE2-04-13-17-22-35
+# snapshot  'DATAOPS_TABLE2','SS-DATAOPS_TABLE2-04-13-17-22-36 etc.,
+####################
+
 OP1="/home/hbase/OUTPUT1"
 
 # Function to create the snapshots
 createss(){
   for sh in $(cat usertables)
   do
-
+ 
   # Command to create the snapshots
   echo "snapshot  '$sh','SS-$sh-`date +"%m-%d-%y-%H-%M"`'" | hbase shell >> $OP1
     if [ "$(grep 'ERROR' $OP1)" ];
@@ -15,7 +26,6 @@ createss(){
         exit 1
     else
         echo "Snapshot success"
-        echo $?
         exportss
     fi
   done
