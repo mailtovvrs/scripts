@@ -59,8 +59,7 @@ exportss(){
 
 purgess(){
 
-
-for sh in $(cat $OP1 | awk -F "'" '{ print $4 }')
+ for sh in $(cat $OP1 | awk -F "'" '{ print $4 }')
  do
  echo "delete_snapshot '$sh'" | hbase shell
  done
