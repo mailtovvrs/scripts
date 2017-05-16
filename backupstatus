@@ -1,73 +1,0 @@
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   174  100   174    0     0  19590      0 --:--:-- --:--:-- --:--:-- 21750
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-<lst name="responseHeader"><int name="status">0</int><int name="QTime">0</int></lst><str name="status">OK</str>
-</response>
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   174  100   174    0     0  22553      0 --:--:-- --:--:-- --:--:-- 24857
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-<lst name="responseHeader"><int name="status">0</int><int name="QTime">0</int></lst><str name="status">OK</str>
-</response>
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   174  100   174    0     0  19026      0 --:--:-- --:--:-- --:--:-- 21750
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-<lst name="responseHeader"><int name="status">0</int><int name="QTime">0</int></lst><str name="status">OK</str>
-</response>
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   261  100   261    0     0  26962      0 --:--:-- --:--:-- --:--:-- 29000
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
-<title>Error 404 </title>
-</head>
-<body>
-<h2>HTTP ERROR: 404</h2>
-<p>Problem accessing /solr1/venkat/replication. Reason:
-<pre>    Not Found</pre></p>
-<hr />
-</body>
-</html>
-curl: (1) Protocol "http12" not supported or disabled in libcurl
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   174  100   174    0     0  21574      0 --:--:-- --:--:-- --:--:-- 24857
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-<lst name="responseHeader"><int name="status">0</int><int name="QTime">0</int></lst><str name="status">OK</str>
-</response>
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1229  100  1229    0     0   135k      0 --:--:-- --:--:-- --:--:--  150k
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-<lst name="responseHeader"><int name="status">0</int><int name="QTime">1</int></lst><lst name="details"><str name="indexSize">6.08 KB</str><str name="indexPath">/usr/local/Cellar/solr/6.4.1/server/solr/venkat/data/index/</str><arr name="commits"><lst><long name="indexVersion">1493247800645</long><long name="generation">6</long><arr name="filelist"><str>_4.fdt</str><str>_4.fdx</str><str>_4.fnm</str><str>_4.nvd</str><str>_4.nvm</str><str>_4.si</str><str>_4_Lucene50_0.doc</str><str>_4_Lucene50_0.pos</str><str>_4_Lucene50_0.tim</str><str>_4_Lucene50_0.tip</str><str>_4_Lucene54_0.dvd</str><str>_4_Lucene54_0.dvm</str><str>segments_6</str></arr></lst></arr><str name="isMaster">true</str><str name="isSlave">false</str><long name="indexVersion">1493247800645</long><long name="generation">6</long><lst name="master"><arr name="replicateAfter"><str>commit</str></arr><str name="replicationEnabled">true</str></lst><lst name="backup"><str name="startTime">Mon May 01 17:55:11 UTC 2017</str><int name="fileCount">13</int><str name="status">success</str><str name="snapshotCompletedAt">Mon May 01 17:55:11 UTC 2017</str><str name="snapshotName">venkat</str></lst></lst>
-</response>
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1229  100  1229    0     0   152k      0 --:--:-- --:--:-- --:--:--  171k
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-<lst name="responseHeader"><int name="status">0</int><int name="QTime">0</int></lst><lst name="details"><str name="indexSize">6.08 KB</str><str name="indexPath">/usr/local/Cellar/solr/6.4.1/server/solr/venkat/data/index/</str><arr name="commits"><lst><long name="indexVersion">1493247800645</long><long name="generation">6</long><arr name="filelist"><str>_4.fdt</str><str>_4.fdx</str><str>_4.fnm</str><str>_4.nvd</str><str>_4.nvm</str><str>_4.si</str><str>_4_Lucene50_0.doc</str><str>_4_Lucene50_0.pos</str><str>_4_Lucene50_0.tim</str><str>_4_Lucene50_0.tip</str><str>_4_Lucene54_0.dvd</str><str>_4_Lucene54_0.dvm</str><str>segments_6</str></arr></lst></arr><str name="isMaster">true</str><str name="isSlave">false</str><long name="indexVersion">1493247800645</long><long name="generation">6</long><lst name="master"><arr name="replicateAfter"><str>commit</str></arr><str name="replicationEnabled">true</str></lst><lst name="backup"><str name="startTime">Mon May 01 17:55:11 UTC 2017</str><int name="fileCount">13</int><str name="status">success</str><str name="snapshotCompletedAt">Mon May 01 17:55:11 UTC 2017</str><str name="snapshotName">venkat</str></lst></lst>
-</response>
-curl: (1) Protocol "http1" not supported or disabled in libcurl
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1229  100  1229    0     0    99k      0 --:--:-- --:--:-- --:--:--  109k
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-<lst name="responseHeader"><int name="status">0</int><int name="QTime">2</int></lst><lst name="details"><str name="indexSize">6.08 KB</str><str name="indexPath">/usr/local/Cellar/solr/6.4.1/server/solr/venkat/data/index/</str><arr name="commits"><lst><long name="indexVersion">1493247800645</long><long name="generation">6</long><arr name="filelist"><str>_4.fdt</str><str>_4.fdx</str><str>_4.fnm</str><str>_4.nvd</str><str>_4.nvm</str><str>_4.si</str><str>_4_Lucene50_0.doc</str><str>_4_Lucene50_0.pos</str><str>_4_Lucene50_0.tim</str><str>_4_Lucene50_0.tip</str><str>_4_Lucene54_0.dvd</str><str>_4_Lucene54_0.dvm</str><str>segments_6</str></arr></lst></arr><str name="isMaster">true</str><str name="isSlave">false</str><long name="indexVersion">1493247800645</long><long name="generation">6</long><lst name="master"><arr name="replicateAfter"><str>commit</str></arr><str name="replicationEnabled">true</str></lst><lst name="backup"><str name="startTime">Mon May 01 17:55:11 UTC 2017</str><int name="fileCount">13</int><str name="status">success</str><str name="snapshotCompletedAt">Mon May 01 17:55:11 UTC 2017</str><str name="snapshotName">venkat</str></lst></lst>
-</response>
