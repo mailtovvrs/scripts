@@ -1,3 +1,5 @@
+# Reference: https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups
+# Reference: https://github.com/yspanchal/solr-backup/blob/master/solr-backup.py
 #!/usr/bin/env python
 
 import os
