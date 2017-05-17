@@ -38,6 +38,7 @@ def solr_backup():
       print "Backup Location:", backup_dir
 
     except:
+      # If you want to ignore and dont want to catch the exceptions than you can specify pass in the except block  
       pass
 
 if __name__ == '__main__':
