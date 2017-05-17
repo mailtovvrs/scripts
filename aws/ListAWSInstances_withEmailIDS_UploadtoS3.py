@@ -4,7 +4,7 @@ import boto3
 from validate_email_address import validate_email
 from boto.s3.key import Key
 
-s3_bucket = "infor-devops-dev-gtndo"
+s3_bucket = "xxxxx"
 output = "/Users/vvelagala/Downloads/owner-report.txt"
 s3_fileName =  output
 target = "vvelagala/owner-report.txt"
