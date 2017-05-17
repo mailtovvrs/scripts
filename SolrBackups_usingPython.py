@@ -1,3 +1,5 @@
+# Reference: https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups
+# Reference: https://github.com/yspanchal/solr-backup/blob/master/solr-backup.py
 #!/usr/bin/env python
 
 import os
@@ -36,6 +38,7 @@ def solr_backup():
       print "Backup Location:", backup_dir
 
     except:
+      # If you want to ignore and dont want to catch the exceptions than you can specify pass in the except block  
       pass
 
 if __name__ == '__main__':
