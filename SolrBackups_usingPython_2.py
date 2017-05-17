@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+# Use the below from__future__import print_function module for writing to file:BackupStatus.txt
 from __future__ import print_function
 import os
 import json
