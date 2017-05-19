@@ -4,8 +4,10 @@ from __future__ import print_function
 import os
 import json
 import urllib2
+# Module included to get the host fully qualified name
 import socket
 
+# socket.getfqdn() gets you the fully qualified name of the current host you logged in
 ENV =  "http://" + socket.getfqdn() + ":8983/solr/UMB/"
 
 # setup variables
