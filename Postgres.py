@@ -24,8 +24,9 @@ def insert_env(env_name,minauditid,maxauditid):
    finally:
     if conn is not None:
      conn.close()
+   return 1
 
-insert_env('rctp','1','12')
+one_returned = insert_env('rctp','1','12')
 
 
 
@@ -54,8 +55,9 @@ def insert_batch(envid,startauditid,endauditid,update_time,running_host,status):
    finally:
     if conn is not None:
      conn.close()
+   return 1
 
-insert_batch(1,2,3,'2017-08-09 15:36:38','test','yes')
+one_returned = insert_batch(1,2,3,'2017-08-09 15:36:38','test','yes')
 
 
 def insert_keydetails(batchid,auditid,errordesc,errortime,status,update_time):
@@ -82,8 +84,9 @@ def insert_keydetails(batchid,auditid,errordesc,errortime,status,update_time):
    finally:
     if conn is not None:
      conn.close()
+   return 1
 
-insert_keydetails(1,2,'Error','2017-08-09 15:36:38','failed','2017-08-09 15:36:38')
+one_returned = insert_keydetails(1,2,'Error','2017-08-09 15:36:38','failed','2017-08-09 15:36:38')
 
 
 def update_batch(batchid,status):
@@ -107,8 +110,9 @@ def update_batch(batchid,status):
    finally:
     if conn is not None:
      conn.close()
+   return 1
 
-update_batch(3,'not running')
+one_returned = update_batch(3,'not running')
 
 
 
@@ -137,5 +141,6 @@ def update_keydetails(batchid,auditid,errorno,errordesc,status):
    finally:
     if conn is not None:
      conn.close()
+   return 1
 
-update_keydetails(2,3,250,'250error', 'succeeded')
+one_returned = update_keydetails(2,3,250,'250error', 'succeeded')
