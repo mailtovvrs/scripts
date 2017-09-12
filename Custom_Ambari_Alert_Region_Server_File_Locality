@@ -1,0 +1,85 @@
+STEP1:
+WE ARE CREATING METRIC TYPE ALERT WHICH MEANS THERE WOULD ONLY BE JSON FILE AND NOT THE SCRIPT(PYTHON)
+
+STEP2:
+JSON FILE WILL NEED TO BE CREATED IN THE FOLLOWING LOCATION:
+/var/lib/ambari-server/resources/common-services/HDFS/2.1.0.2.0/package/alerts
+
+STEP3:
+CREATE AND REGISTER THE CUSTOM AMBARI ALERT USING THE FOLLOWING REST API:
+curl -u admin:admin -i -H 'X-Requested-By:ambari' -X POST -d @filesLocal.json  http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions
+
+STEP4:
+DO AMBARI RESTART SO THE CHANGES ARE PROPAGATED TO ALL NODES IN THE CLUSTER
+
+STEP5:
+IF THE STATUS CODE IS 201/OK THAT MEANS CUSTOM ALERT IS SUCCESSFULLY REGISTERED IN AMBARI
+
+STEP6:
+TO CHECK THE ALERT IS REGISTERED OR NOT USE THE FOLLOWING IN THE BROWSER:
+http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions/
+
+STEP7:
+USALLY THE CREATED ALERT WILL BE REGISTERED AS LAST IN ALERT DEFINITIONS:
+eg:
+http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions/101
+
+STEP8:
+CHECK IN THE AMBARI IN ALERTS THE ALERT IS SUCCESSFULLY INTEGRATED OR NOT
+
+
+BELOW IS THE METRIC TYPE JSON FILE
+--------------------------------
+{
+  "AlertDefinition" : {
+    "cluster_name" : "Lab",
+    "component_name" : "HBASE_REGIONSERVER",
+    "description" : "[CUSTOM] This is the percentage of local files if the percentage is less than 70% than its the time to do Major Compaction ",
+    "enabled" : true,
+    "help_url" : null,
+    "id" : 120,
+    "ignore_host" : false,
+    "interval" : 1,
+    "label" : "Region Server Locality",
+    "name" : "region_server_locality",
+    "repeat_tolerance" : 1,
+    "repeat_tolerance_enabled" : false,
+    "scope" : "ANY",
+    "service_name" : "HBASE",
+    "source" : {
+      "jmx" : {
+        "value" : "{0}",
+        "property_list" : [
+          "Hadoop:service=HBase,name=RegionServer,sub=Server/percentFilesLocal"
+        ]
+      },
+      "reporting" : {
+        "warning" : {
+          "text" : "File Locality is under warning",
+          "value" : 75.0
+        },
+        "critical" : {
+          "text" : "File Locality is under critical",
+          "value" : 70.0
+        },
+        "units" : "%",
+        "ok" : {
+          "text" : "File Locality is OK"
+        },
+        "type" : "PERCENT"
+      },
+      "type" : "METRIC",
+      "uri" : {
+        "http" : "{{hbase-site/hbase.regionserver.info.port}}",
+        "connection_timeout" : 5.0,
+        "default_port" : 60030.0
+      }
+    }
+  }
+}
+-------
+
+
+REFERENCE HWK FOR CREATING,UPDATING,DELETING ALERTS:
+https://community.hortonworks.com/articles/38149/how-to-create-and-register-custom-ambari-alerts.html
+ 
