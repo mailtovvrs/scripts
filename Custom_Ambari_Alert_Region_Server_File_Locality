@@ -28,8 +28,8 @@ STEP8:
 CHECK IN THE AMBARI IN ALERTS THE ALERT IS SUCCESSFULLY INTEGRATED OR NOT
 
 
-BELOW IS THE METRIC TYPE JSON FILE
---------------------------------
+BELOW IS THE METRIC TYPE JSON FILE:filesLocal.json
+-------------------------------------------------
 {
   "AlertDefinition" : {
     "cluster_name" : "Lab",
