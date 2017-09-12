@@ -1,0 +1,54 @@
+PG_DUMP FOR GENERATING DDL&DML SCRIPTS:
+
+Note: Here envs,keydetails,configs,batches are the postgres tables and we are using utility pg_dump to create DDL and DML scripts
+
+As a postgres user:
+-bash-4.1$ pwd
+/var/lib/pgsql
+
+
+1.envs:
+
+creating the script:
+pg_dump -t "aws.envs" --schema-only awstransfer > envs.sql
+
+Using the script to generate the table structure:
+psql -d awstransfer -a -f envs.sql
+
+2.batches:
+
+creating the script:
+pg_dump -t "aws.batches" --schema-only awstransfer > batches.sql
+
+Using the script to generate the table structure:
+psql -d awstransfer -a -f batches.sql
+
+3.keydetails:
+
+creating the script:
+pg_dump -t "aws.keydetails" --schema-only awstransfer > keydetails.sql
+
+Using the script to generate the table structure:
+psql -d awstransfer -a -f keydetails.sql
+
+4.configs:
+
+creating the script:
+pg_dump -t "aws.configs" --schema-only awstransfer > configs.sql
+
+Using the script to generate the table structure:
+psql -d awstransfer -a -f configs.sql 
+
+
+
+
+DML for awstransfer:
+
+1.envs:
+pg_dump --table=aws.envs --data-only --column-inserts awstransfer > DML_envs.sql
+psql -d awstransfer -a -f dml_envs.sql
+Note:The above DML would insert the data into the envs table.
+
+2.batches:
+pg_dump --table=aws.batches --data-only --column-inserts awstransfer > DML_batches.sql
+psql -d awstransfer -a -f DML_batches.sql
