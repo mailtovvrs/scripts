@@ -22,7 +22,7 @@ http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions/
 STEP7:
 USALLY THE CREATED ALERT WILL BE REGISTERED AS LAST IN ALERT DEFINITIONS:
 eg:
-http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions/101
+http://hostname:8080/api/v1/clusters/Lab/alert_definitions/101
 
 STEP8:
 CHECK IN THE AMBARI IN ALERTS THE ALERT IS SUCCESSFULLY INTEGRATED OR NOT
