@@ -7,7 +7,7 @@ JSON FILE WILL NEED TO BE CREATED IN THE FOLLOWING LOCATION:
 
 STEP3:
 CREATE AND REGISTER THE CUSTOM AMBARI ALERT USING THE FOLLOWING REST API:
-curl -u admin:admin -i -H 'X-Requested-By:ambari' -X POST -d @filesLocal.json  http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions
+curl -u admin:admin -i -H 'X-Requested-By:ambari' -X POST -d @filesLocal.json  http://hostname:8080/api/v1/clusters/Lab/alert_definitions
 
 STEP4:
 DO AMBARI RESTART SO THE CHANGES ARE PROPAGATED TO ALL NODES IN THE CLUSTER
@@ -17,19 +17,19 @@ IF THE STATUS CODE IS 201/OK THAT MEANS CUSTOM ALERT IS SUCCESSFULLY REGISTERED 
 
 STEP6:
 TO CHECK THE ALERT IS REGISTERED OR NOT USE THE FOLLOWING IN THE BROWSER:
-http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions/
+http://hostname:8080/api/v1/clusters/Lab/alert_definitions/
 
 STEP7:
 USALLY THE CREATED ALERT WILL BE REGISTERED AS LAST IN ALERT DEFINITIONS:
 eg:
-http://lab-happ-01-a:8080/api/v1/clusters/Lab/alert_definitions/101
+http://hostname:8080/api/v1/clusters/Lab/alert_definitions/101
 
 STEP8:
 CHECK IN THE AMBARI IN ALERTS THE ALERT IS SUCCESSFULLY INTEGRATED OR NOT
 
 
-BELOW IS THE METRIC TYPE JSON FILE
---------------------------------
+BELOW IS THE METRIC TYPE JSON FILE:filesLocal.json
+-------------------------------------------------
 {
   "AlertDefinition" : {
     "cluster_name" : "Lab",
