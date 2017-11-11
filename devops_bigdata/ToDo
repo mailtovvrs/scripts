@@ -1,0 +1,27 @@
+1.Rest API Tasks:
+  ---------------
+
+a)Automate single node ambari setup using Rest API's ------> CLUSTER BULD
+
+b)Automate multi node ambari setup using Rest API's -------> CLUSTER BUILD
+
+c)Automate service configs change using Rest API's --------> DISTRIBUTED CONFIGS UPDATE
+
+d)Scale out additional nodes using Rest API's ------------> SCALABILITY BENEFIT
+
+e)Automate cluster stop/start using Rest API's -----------> CLUSTER MANAGEMENT BENEFIT
+
+f)Automate deploy components using Rest API's ------------> COMPONENT SCALABILITY BENEFIT
+
+g)Automate services state using Rest API's ---------------> SERVICE MANAGEMENT BENEFIT
+
+h)Automate services health check using Rest API's ---------> SERVICE HEALTH CHECK BENEFIT
+
+
+2.Script all the above Rest API Tasks to functions in Python
+   
+3.Using Jenkins to define different jobs like: cluster build job, configs update job, hosts scalability job, cluster management job, component scalability job,
+service management job, service health check job
+
+4. Schedule Jenkins job? ----- Is this possible?
+ 
