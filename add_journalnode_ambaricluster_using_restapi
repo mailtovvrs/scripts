@@ -1,0 +1,36 @@
+STEPS TO ADD  JOURNAL NODE TO EXISTING AMBARI CLUSTER USING REST API, REMEMBER THAT THIS OPTION(TO ADD JOURNAL NODE TO CLUSTER IS NOT AVAILABLE VIA AMBARI UI).SO
+ONLY OPTION IS TO ADD IT USING REST API:
+
+=============================
+1. Assign Journal node:
+
+Syntax:
+curl -u admin:admin -H ‘X-Requested-By: Ambari’ -X POST http://localhost:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_JN_NODE/host_components/JOURNALNODE
+
+Eg:
+curl -u admin:admin -H 'X-Requested-By: Ambari' -X POST http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-01-a.dc.gtnexus.com/host_components/JOURNALNODE -v
+
+Note localhost above refers to ambari server host and NEW_JN_NODE refers to host where you want to setup journal node:lab-hddb-01-a.dc.gtnexus.com
+
+
+2. Install Journalnode:
+
+Syntax:
+curl -u admin:admin -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' http://localhost:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_JN_NODE/host_components/JOURNALNODE
+
+Eg:
+curl -u admin:admin -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-01-a.dc.gtnexus.com/host_components/JOURNALNODE 
+
+
+3. Create JournalNode Directories (Manual NOT THROUGH REST API):
+In hdfs-site.xml search for dfs.journalnode.edits.dir and check the journalnode directory location and add folder cluser name
+
+Eg:
+dfs.journalnode.edits.dir=/hadoop/hdfs/journal
+Add folder as what exists on the other journal node as:
+/hadoop/hdfs/journal/LabA
+
+Reference:
+https://zdatainc.com/2015/09/add-journalnode-to-ambari-managed-hadoop-cluster/
+
+===========================
