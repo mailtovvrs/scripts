@@ -1,0 +1,45 @@
+Removing a Host:lab-hddb-04-a.dc.gtnexus.com - using REST API:
+--------------------------------------------------------------
+
+1. Get a list of host components mapped to the host:
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X GET http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com 
+
+Run the above curl and redirect to a file from there identify the components deployed on the host
+
+
+2. DELETE all host components mapped to this host:
+
+For instance here we are trying to delete the following components:HBASE_CLIENT,HBASE_REGIONSERVER,HDFS_CLIENT,HST_AGENT,JOURNALNODE,MAPREDUCE2_CLIENT,METRICS_MONITOR,NODEMANAGER,YARN_CLIENT,ZOOKEEPER_CLIENT deployed on the host:lab-hddb-04-a.dc.gtnexus.com
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/HBASE_CLIENT
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/HBASE_REGIONSERVER
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/HDFS_CLIENT
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/HST_AGENT
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/JOURNALNODE
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/MAPREDUCE2_CLIENT
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/METRICS_MONITOR
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/NODEMANAGER
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/YARN_CLIENT
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com/host_components/ZOOKEEPER_CLIENT
+
+
+4. DELETE the host:
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-04-a.dc.gtnexus.com
+
+
+Note: if step3 fails for some reason make sure the deployed components are in STOPPED state.
+
+Reference:
+https://community.hortonworks.com/questions/42658/how-to-remove-a-host-which-include-journal-node-co.html
+
