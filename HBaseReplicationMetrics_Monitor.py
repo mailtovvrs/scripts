@@ -6,9 +6,9 @@ import json
 def execute(a1,a2,a3):
 
 
- req1 = urllib2.Request('http://pprd-hddb2-01-b.dc.gtnexus.com:16030/jmx')
- req2 = urllib2.Request('http://pprd-hddb2-02-b.dc.gtnexus.com:16030/jmx')
- req3 = urllib2.Request('http://pprd-hddb2-03-b.dc.gtnexus.com:16030/jmx')
+ req1 = urllib2.Request('http://datanode1:16030/jmx')
+ req2 = urllib2.Request('http://datanode2:16030/jmx')
+ req3 = urllib2.Request('http://datanode3:16030/jmx')
 
  opener = urllib2.build_opener()
  f1 = opener.open(req1)
