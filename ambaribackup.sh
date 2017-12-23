@@ -10,7 +10,7 @@ mailto=mailtovvrs@gmail.com
 mkdir -p $POSTGRESDB_BACKUP
 
 # This is Very Very important to include if you are running as non-postgres user as the PATH envionment variable value needs to be appended with script location
-PATH="/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/java/jdk1.7.0_67/bin:/opt/TradeCard/bin:/root/bin;/root/scripts/ambaribackup.sh;"
+
 
 # Backup command
 runuser -l $POSTGRES_USER -c 'pg_dump ambari' > $POSTGRES_BACKEDFILE;
