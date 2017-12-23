@@ -8,7 +8,7 @@ mailto=xxxxx
 
 # Create the backup directory
 mkdir -p $POSTGRESDB_BACKUP
-PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/TradeCard/bin:/root/bin;/opt/dataops/scripts/ambaribackup_dd.sh;"
+
 
 # Backup command
 if  mountpoint -q /backup/hadoop/;
