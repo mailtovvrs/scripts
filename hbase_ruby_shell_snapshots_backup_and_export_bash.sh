@@ -27,7 +27,7 @@ exportss(){
 for esh in $(cat /home/hbase/OUTPUT1 | awk -F "'" '{ print $4 }')
 
 do
-  hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot $esh -copy-to hdfs://pprddr/apps/hbase/data -mappers 16
+  hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot $esh -copy-to hdfs://targetcluster/apps/hbase/data -mappers 16
 done
 
 echo $esh
