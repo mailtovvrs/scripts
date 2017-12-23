@@ -1,0 +1,62 @@
+Prereq:
+1) Install Ambari server
+2) Install Ambari agents on edge nodes
+3) Start Ambari server & ambari agent
+4) replace hostname in ambari-agent.ini file
+5) Install JDK
+6) Ambari-server setup
+7) Start Ambari agents and server 
+
+########  Run following #############
+
+1) register blueprint
+# curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://node1.sysadminslab.com:8080/api/v1/blueprints/<Blueprint-name> -d @cluster_configuration.json
+
+2) Register Internal repo via REST API.
+## Make sure to use following names from cluster_confi.json in above url
+api/v1/stacks/HDP/versions/2.6/operating_systems/redhat6/repositories/<HDP>-<2.6>
+        "stack_name" : "HDP",
+        "stack_version" : "2.6"
+
+# curl -H "X-Requested-By: ambari" -X PUT -u admin:admin http://node1.sysadminslab.com:8080/api/v1/stacks/HDP/versions/2.6/operating_systems/redhat6/repositories/HDP-UTILS-1.1.0.21 -d @repo.json
+# curl -H "X-Requested-By: ambari" -X PUT -u admin:admin http://node1.sysadminslab.com:8080/api/v1/stacks/HDP/versions/2.6/operating_systems/redhat6/repositories/HDP-2.6 -d @repo.json
+
+
+3) Start install 
+# curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://node1.sysadminslab.com:8080/api/v1/clusters/cluster1 -d @hostmapping.json
+
+
+4) Install Status:
+curl -H "X-Requested-By: ambari" -X GET -u admin:admin http://node1.sysadminslab.com:8080/api/v1/clusters/cluster1/requests/
+curl -H "X-Requested-By: ambari" -X GET -u admin:admin http://node2.sysadminslab.com:8080/api/v1/clusters/cluster1/requests/1
+
+Status %
+curl -s "X-Requested-By: ambari" -X GET -u admin:admin http://node1.sysadminslab.com:8080/api/v1/clusters/cluster-1/requests/1 | grep progress_percent
+curl -s "X-Requested-By: ambari" -X GET -u admin:admin http://node1.sysadminslab.com:8080/api/v1/clusters/cluster-1/requests/1 | grep "request_status"
+
+
+
+5) Serevice checks (single)
+
+curl -ivk -H "X-Requested-By: ambari" -u admin:admin -X POST -d @payload-single http://node1.sysadminslab.com:8080/api/v1/clusters/<cluster-name>/requests
+
+[root@hadoop5 ~]# cat payload-single
+    {
+       "RequestInfo":{
+          "context":"HDFS Service Check",
+          "command":"HDFS_SERVICE_CHECK"
+       },
+       "Requests/resource_filters":[
+          {
+             "service_name":"HDFS"
+          }
+       ]
+    }
+
+
+6) Service checks  (Multi)
+curl -ivk -H "X-Requested-By: ambari" -u <user>:<password> -X POST -d @payload http://<ambari-server>:8080/api/v1/clusters/<cluster-name>/request_schedules
+
+
+
+
