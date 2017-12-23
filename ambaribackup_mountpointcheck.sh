@@ -23,7 +23,7 @@ if  [  "$(grep -i 'PostgreSQL database dump complete' $POSTGRES_BACKEDFILE)" ] &
 then
 echo "Success"
 else
-echo "Dataops Team please taken an action: Ambari Postgres backup failed due to the reason that the string PostgreSQL database completed was not found on `hostname` at `date` in $POSTGRES_BACKEDFILE"|  mailx -s "dataops@gtnexus.com" -s "FAILURE: Ambari Postgres Backup failed on `hostname -f`" -S smtp="mail.dc.gtnexus.com:25" -S ssl-verify=ignore $mailto
+echo "Dataops Team please taken an action: Ambari Postgres backup failed due to the reason that the string PostgreSQL database completed was not found on `hostname` at `date` in $POSTGRES_BACKEDFILE"|  mailx -s "Email DL" -s "FAILURE: Ambari Postgres Backup failed on `hostname -f`" -S smtp="smtpserver:25" -S ssl-verify=ignore $mailto
 fi
 
 # Remove backups older than 14 days
