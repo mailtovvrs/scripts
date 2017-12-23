@@ -1,0 +1,9 @@
+## blueprint repo file
+
+[root@node1 ~]# cat repo.json
+    {
+    "Repositories" : {
+      "base_url" : "http://192.168.1.1/Repo_Dumps/hadoop",
+      "verify_base_url" : true
+    }
+    }
