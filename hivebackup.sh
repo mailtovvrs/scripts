@@ -16,16 +16,16 @@ echo
 
  echo  ******Size of backup file*********
  echo
- echo "Size of backupfile:" `du -h /home/vvelagala/scripts/$backupfile`
+ echo "Size of backupfile:" `du -h /home/venkat/scripts/$backupfile`
  echo
- echo "Size of compressed backupfile:" `du -h /home/vvelagala/scripts/$backupfile.gz`
+ echo "Size of compressed backupfile:" `du -h /home/venkat/scripts/$backupfile.gz`
  echo
 
 
 
 #Checking if the MySQL is successfully backup or not"
 
-if  [  "$(grep -i 'Dump completed' /home/vvelagala/scripts/$backupfile)" ];
+if  [  "$(grep -i 'Dump completed' /home/venkat/scripts/$backupfile)" ];
 then
 #mailx -s "SUCCESS: Hive Daily backup Success string Dump completed found in the backup file $backupfile" $mailto
 
@@ -40,5 +40,5 @@ mailx -s "FAILURE: Hive Daily backup FAILED Success string Dump completed not fo
 fi
 
 #Remove backups older than 2 days 
-find /home/vvelagala/scripts/ -maxdepth 1 -type d -mtime +2 -exec rm -rf {} \; 
+find /home/venkat/scripts/ -maxdepth 1 -type d -mtime +2 -exec rm -rf {} \; 
 
