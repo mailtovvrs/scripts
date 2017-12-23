@@ -35,9 +35,9 @@ createss(){
 exportss(){
   for esh in $(cat $OP1 | awk -F "'" '{ print $4 }')
   do
-  hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot $esh -copy-to hdfs://pprddr/apps/hbase/data -mappers 16
+  hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot $esh -copy-to hdfs://targetcluster/apps/hbase/data -mappers 16
   done
-  PPRDDRSS="`hdfs dfs -ls hdfs://pprddr/apps/hbase/data/* | grep SS-DATAOPS_TABLE* | wc -l`"
+  PPRDDRSS="`hdfs dfs -ls hdfs://targetcluster/apps/hbase/data/* | grep SS-DATAOPS_TABLE* | wc -l`"
   PPRDSS="`grep -o 'SS-*' /home/hbase/OUTPUT2 | wc -l`"
    if [ $PPRDDRSS -ge $PPRDSS ];
 
