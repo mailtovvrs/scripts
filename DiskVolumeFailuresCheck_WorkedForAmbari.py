@@ -3,8 +3,8 @@
 import urllib2
 import json
 def execute(a1,a2,a3):
-# Need the urllib2 module to make a request to below jmx
-        req = urllib2.Request("http://lab-hddb-04-b.qa.gtnexus.com:50070/jmx")
+# Need the urllib2 module to make a request to below jmxhttp://Namenodehost:50070/jmx
+        req = urllib2.Request("")
 
 
 # This is mandatory code to build_opener()
