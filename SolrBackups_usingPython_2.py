@@ -7,7 +7,7 @@ import json
 import urllib2
 
 # setup variables
-solr_url = "http://lab-kvs1-01-b.qa.gtnexus.com:8983/solr/UMB/"  # solr url "http://localhost:8983/solr/"
+solr_url = "http://solrserver:8983/solr/UMB/"  # solr url "http://localhost:8983/solr/"
 backup_dir = "/database/solr/data/UMB/data"  # solr backup directory "/home/solr/backup"
 
 
