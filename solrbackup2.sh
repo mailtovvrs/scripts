@@ -1,13 +1,13 @@
 #!/bin/bash
 #CORE="venkat"
 #ENV="localhost"
-#BAKLOC="/Users/vvelagala/venkatsolrbackup/"
+#BAKLOC="/Users/venkat/venkatsolrbackup/"
 MAILTO="abc.com"
 
 
 #backup API
-backup(){
-curl 'http1://localhost:8983/solr/venkat/replication?command=backup&name=venkat&location=/Users/vvelagala/venkatsolrbackup/' >> backupstatus 2>&1
+backup(){http1://localhost:8983/solr/venkat/replication?command=backup&name=venkat&location=/Users/venkat/venkatsolrbackup/'
+curl ' >> backupstatus 2>&1
 	if [ $? -eq 0 ]
         then
 	 echo "[Solr Backup Succeeded]"
