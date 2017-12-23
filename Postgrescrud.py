@@ -12,5 +12,5 @@ class Postgrescrud:
  # Connect to Postgres DB and select
  def connect(self):
   conn = None
-  conn = "host='localhost' dbname='awstransfer' user='postgres'"
+  conn = "host='localhost' dbname='test' user='postgres'"
   return conn
