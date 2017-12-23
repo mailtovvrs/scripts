@@ -4,8 +4,7 @@ MYSQLHIVEDB_BACKUP="/backup/hadoop/DD/`date +%Y-%m-%d`/hive"
 MYSQLHIVEDB_BACKEDFILE="/backup/hadoop/DD/`date +%Y-%m-%d`/hive/`hostname -f`_hive_metadata_mysql_backup_`date +%Y%m%d`.sql"
 MYSQL_USER="root"
 DELETEFILES="/backup/hadoop/DD/"
-#mailto=_data_operations@infor.com
-mailto=venkat.velagala@infor.com
+mailto=xxxxxx
 # Create the backup directory
 mkdir -p $MYSQLHIVEDB_BACKUP
 
