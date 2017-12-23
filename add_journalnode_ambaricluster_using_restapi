@@ -10,8 +10,8 @@ curl -u admin:admin -H ‘X-Requested-By: Ambari’ -X POST http://localhost:808
 Eg:
 curl -u admin:admin -H 'X-Requested-By: Ambari' -X POST http://ambariserver:8080/api/v1/clusters/Lab_A/hosts/journalnodehost/host_components/JOURNALNODE -v
 
-Note localhost above refers to ambari server host and NEW_JN_NODE refers to host where you want to setup journal node:lab-hddb-01-a.dc.gtnexus.com
-
+Note localhost above refers to ambari server host and NEW_JN_NODE refers to host where you want to  journal node
+setup
 
 2. Install Journalnode:
 
