@@ -4,7 +4,7 @@ import urllib2
 import json
 
 # Need the urllib2 module to make a request to below jmx
-req = urllib2.Request("http://lab-hddb-04-b.qa.gtnexus.com:50070/jmx")
+req = urllib2.Request("http://namenode:50070/jmx")
 
 # This is mandatory code to build_opener()
 opener = urllib2.build_opener()
