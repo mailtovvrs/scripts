@@ -3,7 +3,6 @@ USER_TO_RUN="hbase"
 HBCKSTATUS="/root/scripts/HBCKSTATUS"
 mailto="xxxxx"
 
-PATH="/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/java/jdk1.7.0_67/bin:/opt/TradeCard/bin:/root/bin;/root/scripts/hbasesh.sh;"
 
 
 # Checking the HBASE File System
