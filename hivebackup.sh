@@ -9,7 +9,7 @@ echo
 echo   "*****Hortonworks Mysql Hive Database Backup started $Now on `hostname`*****"
 echo
 
- mysqldump --log-error=/home/vvelagala/scripts/mysql_hive_backup.log --databases hive > /home/venkat/scripts/$backupfile;
+ mysqldump --log-error=/home/venkat/scripts/mysql_hive_backup.log --databases hive > /home/venkat/scripts/$backupfile;
  mv $backupfile $outputdir
  gzip  > /home/vvelagala/scripts/$backupfile.gz;
  mv $backupfile.gz $outputdir
