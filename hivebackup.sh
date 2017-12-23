@@ -11,7 +11,7 @@ echo
 
  mysqldump --log-error=/home/venkat/scripts/mysql_hive_backup.log --databases hive > /home/venkat/scripts/$backupfile;
  mv $backupfile $outputdir
- gzip  > /home/vvelagala/scripts/$backupfile.gz;
+ gzip  > /home/venkat/scripts/$backupfile.gz;
  mv $backupfile.gz $outputdir
 
  echo  ******Size of backup file*********
