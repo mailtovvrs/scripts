@@ -8,7 +8,7 @@ Syntax:
 curl -u admin:admin -H ‘X-Requested-By: Ambari’ -X POST http://localhost:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_JN_NODE/host_components/JOURNALNODE
 
 Eg:
-curl -u admin:admin -H 'X-Requested-By: Ambari' -X POST http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-01-a.dc.gtnexus.com/host_components/JOURNALNODE -v
+curl -u admin:admin -H 'X-Requested-By: Ambari' -X POST http://ambariserver:8080/api/v1/clusters/Lab_A/hosts/journalnodehost/host_components/JOURNALNODE -v
 
 Note localhost above refers to ambari server host and NEW_JN_NODE refers to host where you want to setup journal node:lab-hddb-01-a.dc.gtnexus.com
 
@@ -19,7 +19,7 @@ Syntax:
 curl -u admin:admin -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' http://localhost:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_JN_NODE/host_components/JOURNALNODE
 
 Eg:
-curl -u admin:admin -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' http://lab-happ-01-a.dc.gtnexus.com:8080/api/v1/clusters/Lab_A/hosts/lab-hddb-01-a.dc.gtnexus.com/host_components/JOURNALNODE 
+curl -u admin:admin -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' http://ambariserverhost:8080/api/v1/clusters/Lab_A/hosts/journalnodehost/host_components/JOURNALNODE 
 
 
 3. Create JournalNode Directories (Manual NOT THROUGH REST API):
