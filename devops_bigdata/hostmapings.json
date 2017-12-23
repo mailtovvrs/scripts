@@ -1,0 +1,23 @@
+## Blueprint hdp file2
+# Hostmapings.json
+
+[root@node1 ~]# cat hostmapping.json
+  {
+        "blueprint": "prod1",
+        "default_password": "admin",
+        "host_groups": [{
+                        "name": "prodnode1",
+                        "hosts": [{
+                                "fqdn": "hadoop1.example.com"
+                        }]
+                },
+                {
+                        "name": "prodnode2",
+                        "hosts": [{
+                                "fqdn": "hadoop1.example.com"
+                        }]
+                }
+
+        ]
+    }
+
