@@ -1,6 +1,6 @@
 #!/bin/bash
 Now=`date`
-outputdir=/home/vvelagala/scripts/mysql-hive-backup
+outputdir=/home/venkat/scripts/mysql-hive-backup
 backupfile=mysql_hive_backup_`/bin/date +\%Y\%m\%d`.sql
 mailto=mailtovvrs@gmail.com
 echo "BACKUPFILE:" $backupfile
@@ -9,7 +9,7 @@ echo
 echo   "*****Hortonworks Mysql Hive Database Backup started $Now on `hostname`*****"
 echo
 
- mysqldump --log-error=/home/vvelagala/scripts/mysql_hive_backup.log --databases hive > /home/vvelagala/scripts/$backupfile;
+ mysqldump --log-error=/home/vvelagala/scripts/mysql_hive_backup.log --databases hive > /home/venkat/scripts/$backupfile;
  mv $backupfile $outputdir
  gzip  > /home/vvelagala/scripts/$backupfile.gz;
  mv $backupfile.gz $outputdir
