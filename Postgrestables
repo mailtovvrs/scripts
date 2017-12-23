@@ -1,20 +1,20 @@
 
-BASICALLY THREE TABLES:env,batch,keydetails
-DATABASE:awstransfer
-SCHEMA: aws
-DATABASE: postgres
+BASICALLY THREE TABLES:xxx,xxx,xxx
+DATABASE:xxxxx
+SCHEMA: xxx
+DATABASE: xxxx
 
-awstransfer=# select * from aws.env;
+awstransfer=# select * from xxx;
  id | env_name | minauditid | maxauditid |        create_time         
 ----+----------+------------+------------+----------------------------
   1 | alpq     |          1 |          2 | 2017-08-09 15:36:38
 
-awstransfer=# select * from aws.batch;
+awstransfer=# select * from xxx;
  id | envid | startauditid | endauditid |        create_time         |        update_time         | running_host |   status    
 ----+-------+--------------+------------+----------------------------+----------------------------+--------------+-------------
   4 |     1 |            2 |          3 | 2017-08-15 23:37:33.48851  | 2017-08-09 15:36:38        | test         | yes
 
-awstransfer=# select * from aws.keydetails;
+awstransfer=# select * from xxx;
  id | batchid | auditid | errorno | errordesc |         errortime          |  status   |        update_time        
 ----+---------+---------+---------+-----------+----------------------------+-----------+---------------------------
  23 |       2 |       3 | 250     | 250error  | 2017-08-16 22:24:03.273246 | succeeded | 2017-08-16 22:24:03.27326
