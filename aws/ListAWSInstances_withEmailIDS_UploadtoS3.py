@@ -5,9 +5,9 @@ from validate_email_address import validate_email
 from boto.s3.key import Key
 
 s3_bucket = "xxxxx"
-output = "/Users/vvelagala/Downloads/owner-report.txt"
+output = "/Users/venkat/Downloads/owner-report.txt"
 s3_fileName =  output
-target = "vvelagala/owner-report.txt"
+target = "venkat/owner-report.txt"
 
 session = boto3.Session(profile_name="default",region_name = "us-west-2")
 s3 = session.client('s3',region_name= "us-west-2")
