@@ -1,5 +1,5 @@
 ## Multi node HDP cluster setup 
-## clusterconfig.json
+## This is two node clusterconfig.json
 ## BluePrint for HDP setup with two nodes
 ## NOTE: Make sure to have clusterconfig_new.json to have a MANDATORY COMPONENT:APP_TIMELINE_SERVER otherwise you will
 ## hit with the following error:
