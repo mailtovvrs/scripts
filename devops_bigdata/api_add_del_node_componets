@@ -1,0 +1,170 @@
+https://cwiki.apache.org/confluence/display/AMBARI/Add+a+host+and+deploy+components+using+APIs
+
+https://issues.apache.org/jira/browse/AMBARI-14394
+
+https://gist.github.com/mr-jstraub/0b55de318eeae6695c3f
+
+
+
+Removing a Host (2.1.0)
+Verified against releases 2.1.0
+
+The preferred way to remove a host is to move the master services from the host, decommission the slave nodes and then remove the host after deleting all the host components. However, there are situations such as the host is lost and cannot be brought back online for graceful removal. Under this circumstances the following API calls can be used to clean up the host. 
+
+1. Get a list of host components mapped to the host
+curl -u admin:admin -H "X-Requested-By: ambari" -X GET  http://AMBARI_SERVER_HOST:8080/api/v1/clusters/c1/hosts/HOSTNAME
+
+See the property, "host_components"  for all the host.
+
+Sample:
+Output:
+...
+"host_components" : [
+    {
+      "href" : "http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTERNAME/hosts/HOSTNAME/host_components/DATANODE",
+      "HostRoles" : {
+        "cluster_name" : "CLUSTERNAME",
+        "component_name" : "DATANODE",
+        "host_name" : "HOSTNAME"
+      }
+    },
+    {
+      "href" : "http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTERNAME/hosts/HOSTNAME/host_components/GANGLIA_MONITOR",
+      "HostRoles" : {
+        "cluster_name" : "CLUSTERNAME",
+        "component_name" : "GANGLIA_MONITOR",
+        "host_name" : "HOSTNAME"
+      }
+    }]
+ 
+...
+DEleTE
+=======
+2. DELETE all host components mapped to this host
+E.g. Delete DATANODE
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTERNAME/hosts/HOSTNAME/host_components/DATANODE
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop12.sysadminslab.com/host_components/DATANODE
+
+
+3. DELETE the host
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTERNAME/hosts/HOSTNAME
+
+curl -u admin:admin -H "X-Requested-By: ambari" -X DELETE http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop12.sysadminslab.com
+
+
+
+
+ADD New host
+================
+curl --user admin:admin -i -X PUT -d '{"HostRoles": {"state": "STARTED"}}' http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_HOST_ADDED/host_components/GANGLIA_MONITOR
+curl --user admin:admin -i -X PUT -d '{"HostRoles": {"state": "STARTED"}}' http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_HOST_ADDED/host_components/DATANODE
+
+
+
+curl --user admin:admin -v -i -X PUT -d '{"HostRoles": {"state": "STARTED"}}' http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/prodnode1/host_components/HDFS
+
+
+curl --user admin:admin -H "X-Requested-By: ambari" -X PUT -d '{"HostRoles": {"state": "STARTED"}}' http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop10.sysadminslab.com/host_components/HDFS
+curl --user admin:admin -i -X GET http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/requests/9
+
+
+sTATUS
+curl --user admin:admin -H "X-Requested-By: ambari"  -i -X GET http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop10.sysadminslab.com/host_components/NAMENODE
+
+
+
+
+Add Host
+
+1)Register:
+curl -H "X-Requested-By: ambari" -u admin:admin http://hadoop10.sysadminslab.com:8080/api/v1/hosts
+
+Out
+[root@hadoop10 ~]# curl -H "X-Requested-By: ambari" -u admin:admin http://hadoop10.sysadminslab.com:8080/api/v1/hosts
+{
+  "href" : "http://hadoop10.sysadminslab.com:8080/api/v1/hosts",
+  "items" : [
+    {
+      "href" : "http://hadoop10.sysadminslab.com:8080/api/v1/hosts/hadoop10.sysadminslab.com",
+      "Hosts" : {
+        "cluster_name" : "cluster1",
+        "host_name" : "hadoop10.sysadminslab.com"
+      }
+    },
+    {
+      "href" : "http://hadoop10.sysadminslab.com:8080/api/v1/hosts/hadoop11.sysadminslab.com",
+      "Hosts" : {
+        "cluster_name" : "cluster1",
+        "host_name" : "hadoop11.sysadminslab.com"
+      }
+    },
+    {
+      "href" : "http://hadoop10.sysadminslab.com:8080/api/v1/hosts/hadoop12.sysadminslab.com",
+      "Hosts" : {
+        "host_name" : "hadoop12.sysadminslab.com"
+      }
+    }
+  ]
+
+
+2) Add host to Cluster
+
+syn:
+curl -H "X-Requested-By: ambari" --user admin:admin -i -X POST http://CLUSTER:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_HOST_ADDED
+
+curl -H "X-Requested-By: ambari" --user admin:admin -i -X POST http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop12.sysadminslab.com
+
+[root@hadoop10 ~]# curl -H "X-Requested-By: ambari" -u admin:admin -i -X POST http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop12.sysadminslab.com
+HTTP/1.1 201 Created
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Cache-Control: no-store
+Pragma: no-cache
+Set-Cookie: AMBARISESSIONID=1kb8yjibw4j4i8e9lennlvj0b;Path=/;HttpOnly
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+User: admin
+Content-Type: text/plain
+Content-Length: 0
+
+
+3) NodeAdd STATuS
+curl --user admin:admin -i -X GET http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop12.sysadminslab.com
+
+
+4) Node-add -- Add components first and then install
+curl -H "X-Requested-By: ambari" --user admin:admin -i -X POST http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_HOST_ADDED/host_components/DATANODE
+
+curl -H "X-Requested-By: ambari" --user admin:admin -i -X POST http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop12.sysadminslab.com/host_components/PIG
+
+[root@hadoop10 ~]# curl -H "X-Requested-By: ambari" --user admin:admin -i -X POST http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/hosts/hadoop12.sysadminslab.com/host_components/DATANODE
+HTTP/1.1 201 Created
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Cache-Control: no-store
+Pragma: no-cache
+Set-Cookie: AMBARISESSIONID=1ij9yxk1lo8tk815ozxxqw9od;Path=/;HttpOnly
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+User: admin
+Content-Type: text/plain
+Content-Length: 0
+
+
+
+4) Node-Install new components
+Syn:
+curl -H "X-Requested-By: ambari" --user admin:admin -i -X PUT -d '{"HostRoles": {"state": "INSTALLED"}}' http://AMBARI_SERVER_HOST:8080/api/v1/clusters/CLUSTER_NAME/hosts/NEW_NODE/host_components/DATANODE
+
+curl -H "X-Requested-By: ambari" --user admin:admin -i -X PUT -d '{"HostRoles": {"state": "INSTALLED"}}' http://hadoop10.sysadminslab.com:8080/api/v1/clusters/CLUSTER_NAME/hosts/hadoop12.sysadminslab.com/host_components/DATANODE
+
+
+Status of Install
+curl -H "X-Requested-By: ambari" -X GET -u admin:admin  http://hadoop10.sysadminslab.com:8080/api/v1/clusters/cluster1/requests/
+
+
+
+=================
+
+
