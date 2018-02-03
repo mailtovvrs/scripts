@@ -1,9 +1,9 @@
 1.Rest API Tasks:
   ---------------
 
-a)Automate single node ambari setup using Rest API's ------> CLUSTER BULD
+a)Automate single node ambari setup using Rest API's ------> CLUSTER BULD - COMPLETED
 
-b)Automate multi node ambari setup using Rest API's -------> CLUSTER BUILD
+b)Automate multi node ambari setup using Rest API's -------> CLUSTER BUILD - COMPLETED
 
 c)Automate service configs change using Rest API's --------> DISTRIBUTED CONFIGS UPDATE
 
@@ -13,7 +13,7 @@ e)Automate cluster stop/start using Rest API's -----------> CLUSTER MANAGEMENT B
 
 f)Automate deploy components using Rest API's ------------> COMPONENT SCALABILITY BENEFIT
 
-g)Automate services state using Rest API's ---------------> SERVICE MANAGEMENT BENEFIT
+g)Automate services state using Rest API's ---------------> SERVICE MANAGEMENT BENEFIT - IN PROGRESS
 
 h)Automate services health check using Rest API's ---------> SERVICE HEALTH CHECK BENEFIT
 
